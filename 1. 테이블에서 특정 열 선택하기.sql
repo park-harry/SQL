@@ -1,6 +1,3 @@
---dept 테이블 전체를 출력하시오
-select * from dept; 
-
 desc emp 
 -- emp 테이블의 구조를 확인하는 명령어 
 -- desc 는 describe의 약자 
