@@ -3,7 +3,7 @@ desc emp
 -- desc 는 describe의 약자 
 
 -- 사원 테이블에서 이름과 월급을 출력하시오. 
-select ename, sal from emp; 
+select ename, sal from emp;
 
 -- 사원 테이블에서 이름과 직업과 부서번호를 출력하시오. 
 select ename, job, deptno from emp; 
