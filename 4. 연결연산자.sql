@@ -8,4 +8,4 @@ from emp;
 
 -- emp18 테이블에서 학생의 이름과 주소를 출력하시오. 
 select ename || ' 학생은 ' || address || '에 삽니다.' as 학생주소
-from emp18 
+from emp18;
