@@ -20,3 +20,10 @@ from emp18;
 -- ex) 박성환 gmail 
 select ename, substr(email, instr(email,'@')+1, instr(email,'.')-instr(email,'@')-1) 
 from emp18;
+
+-- 우리 반 테이블에서 이메일 도메인을 출력하고 이메일 도메인 별 건수를 출력하는데 건수가 
+-- 높은 것부터 출력하시오. 
+select substr(email,instr(email,'@')+1,instr(email,'.')-instr(email,'@')-1), count(*) 
+from emp18
+group by substr(email,instr(email,'@')+1,instr(email,'.')-instr(email,'@')-1)
+order by count(*) desc;
