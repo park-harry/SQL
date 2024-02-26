@@ -26,3 +26,26 @@ select ename, sal, deptno
 from emp 
 where deptno in (10,20) 
 order by sal desc;
+
+-- 우리반 테이블에서 통신사가 kt 인 학생들의 이름과 통신사를 출력하는데 알뜰 kt도 
+-- 출력되어야 한다. (or 사용 금지!) 
+select ename, telecom 
+from emp18
+where lower(telecom) in ('kt','알뜰 kt');
+
+-- 직업이 SALESMAN, ANALYST 가 아닌 사원들의 이름과 월급을 출력하는데 
+-- 월급이 높은 사원부터 출력하시오.
+select ename, sal 
+from emp 
+where job not in ('SALESMAN','ANALYST')
+order by sal desc;
+
+-- 이름을 출력하는데 이름이 A%%B와 A%B는 제외하고 출력하시오. 
+select ename 
+from emp 
+where ename not in ('A%%B','A%B');
+
+-- 위의 결과를 다시 출력하는데 첫 번째 철자는 대문자로, 나머지는 소문자로 출력하시오.
+select INITCAP(ename) 
+from emp 
+where ename not in ('A%%B','A%B');
