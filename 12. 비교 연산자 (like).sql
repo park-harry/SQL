@@ -60,3 +60,11 @@ where address like '서울%';
 select ename, birth 
 from emp18 
 where birth like '%/11/%'; 
+
+
+-- 사원 테이블에서 이름에 'S'자를 포함하고 있는 사원들의 이름과 입사일을 출력하는데 입사일이 
+-- 최근에 입사한 사원부터 출력하시오.
+select ename, hiredate 
+from emp 
+where ename like '%S%'
+order by hiredate desc;
