@@ -19,3 +19,14 @@ from emp;
 -- 우리반 테이블에서 전공을 출력하는데 중복을 제거해서 출력하시오. 
 select distinct major
 from emp18;
+
+-- 우리반 테이블을 가지고 아래와 같이 출력하시오. 
+-- ex) 최재건 학생의 성별은 남자 이고 통신사는 KT 이며, 경기도 여주시에서 살고 있습니다. 
+-- 컬럼명 → information 으로 출력
+select ename || ' 학생의 성별은 ' || gender || '자이고, 통신사는 '|| telecom || '이며, ' 
+|| address || '에서 살고 있습니다' 
+from emp18; 
+
+-- 사원 테이블에서 관리자 번호 (mgr)을 출력하는데 중복을 제거해서 출력하시오. 
+select distinct mgr
+from emp; 
