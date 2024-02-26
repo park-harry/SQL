@@ -39,5 +39,14 @@ _ (under bar) -> 자릿수 하나를 나타낸다. (이 자리에 뭐가 와도 
 특수 문자나 공백 문자 등을 like 로 검색하고 싶다면 escape 옵션을 사용해야 한다. 
 
 - 논리 연산자 우선 순위 : not → and → or 
-  
+
+- 대소문자 변환 함수
+  - UPPER → 대문자로 변환하는 함수
+  - LOWER→ 소문자로 변환하는 함수
+  - INITCAP→ 문자의 첫 번째 철자는 대문자, 나머지는 소문자로 변환하는 함수
+
+- replace 함수의 업그레이드 한 함수 → regexp_replace
+- sysdate : 오늘 날짜
+- dual : select 절의 함수의 결과를 보기 위한 가상의 테이블 
+ 
 # MSSQL 
