@@ -13,5 +13,10 @@ from emp18
 where instr(ename, '일') != 0 ; 
 
 -- 우리 반 테이블에서 이메일을 출력하고, 이메일에서 @ 앞에 철자만 출력하시오. 
-select email, substr(email, 1, instr(email,'@') -1)
+select ename, substr(email, 1, instr(email,'@')-1)
+from emp18; 
+
+-- 우리 반 테이블에서 이메일을 출력하는데 이름과 이메일 도메인만 출력하시오. 
+-- ex) 박성환 gmail 
+select ename, substr(email, instr(email,'@')+1, instr(email,'.')-instr(email,'@')-1) 
 from emp18;
