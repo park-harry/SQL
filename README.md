@@ -16,5 +16,9 @@
   - column 별칭에 공백 문자나 특수 문자를 사용하려면 double quotation mark를 둘러줘야 한다.
   - column 명에 대소문자를 구분해서 출력하고 싶다면 double quotation mark를 둘러줘야 한다.
  
-- order by 절은 select 문에서 맨 마지막에 기술하는 SQL이고 실행도 맨 마지막에 실행되는 구문이다. 
+- order by 절은 select 문에서 맨 마지막에 기술하는 SQL이고 실행도 맨 마지막에 실행되는 구문이다.
+
+- where 절 검색 조건에서 문자와 날짜를 검색할 때는 반드시 양쪽에 single quotation mark를 둘러줘야 한다.
+  - 한국식 날짜 형식 → 년도/월/일
+  - 미국식 날짜 형식 → 일/월/년도  
 # MSSQL 
