@@ -33,3 +33,10 @@ select * from table(dbms_xplan.display);
 select ename, hiredate 
 from emp 
 where hiredate not between '1981/1/1'and '1981/12/31'; 
+
+-- 1981년도에 입사한 사원들의 이름과 월급과 입사일을 출력하는데 입사일이 
+-- 최근에 입사한 사원부터 출력하시오.
+select ename, sal, hiredate 
+from emp 
+where hiredate between '1981/1/1'and '1981/12/31'
+order by hiredate desc;
