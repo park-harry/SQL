@@ -34,8 +34,8 @@
   4. like  → 텍스트 데이터의 일부를 검색할 때 사용하는 연산자
 
 - like    
-**like**에서 쓰는 %는 wild card -> 이 자리에 뭐가 와도 상관 없다. 그 개수가 몇 개가 되던 관계 없다는 뜻이 된다.    
-_ (under bar) -> 자릿수 하나를 나타낸다. (이 자리에 뭐가 와도 상관 없다.) 
+  - **like**에서 쓰는 %는 wild card → 이 자리에 뭐가 와도 상관 없다. 그 개수가 몇 개가 되던 관계 없다는 뜻이 된다.    
+  - _ (under bar) -> 자릿수 하나를 나타낸다. (이 자리에 뭐가 와도 상관 없다.) 
 특수 문자나 공백 문자 등을 like 로 검색하고 싶다면 escape 옵션을 사용해야 한다. 
 
 - 논리 연산자 우선 순위 : not → and → or 
@@ -52,5 +52,31 @@ _ (under bar) -> 자릿수 하나를 나타낸다. (이 자리에 뭐가 와도 
   - 81년도를 예로 들면 RR은 1981년도로 인식하고 YY는 2081년도로 인식한다.
   - RR은 현재 년도를 기준으로 가까운 년도를 인식한다.
   - YY은 현재 세기를 기준으로 년도를 인식한다.
- 
+
+- nvl(null value logic) 함수는 null 값 대신에 다른 값으로 치환하는 함수
+  - null 값: 데이터가 없는 상태, 알 수 없는 값 (unknown)
+  - **nvl(column name, null 값이면 다른 값을 대신 할 값))**
+  - **nvl2(column name, null 값이 아닐 때의 출력 값, null 값일 때의 출력 값**
+
+- decode : 프로그램 코드 없이 SQL 만으로 IF 문을 구현하는 함수이다.
+  - **decode(column name, 찾을 값 1, 출력할 값 1, 찾을 값 2, 출력할 값 2, 기본 값)** → 찾을 값은 계속 쓸 수 있다.
+- case
+  - decode는 equal (=) 한 것들만 비교 가능하지만, case는 equal (=) 뿐만 아니라 non equal 비교도 가능하다.  
+- order by 절에서 null 값을 다루는 옵션 2가지
+  - **nulls last** : null 값을 맨 뒤에 출력하는 거
+  - **nulls first** : null 값을 맨 앞에 출력하는 거
+
+- regexp_substr 의 예시
+  - regexp_substr(address, '[^ ]+',1,1) → 공백이 아닌 (^) 여러개 (+) 있는 것에서 첫 글자부터 읽어서 잘라내라는 뜻
+
+group 함수 
+1. max
+2. min
+3. avg
+4. sum
+5. count    
+
+- group 함수 특징 
+  - GROUP 함수는 NULL 값을 무시한다.
+  - GROUP 함수로 조건을 줄 때는 HAVING 절을 사용해야 한다. 
 # MSSQL 
