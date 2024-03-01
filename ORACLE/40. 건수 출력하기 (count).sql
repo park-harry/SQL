@@ -81,3 +81,48 @@ group by case when 상호명 ='%스타벅스%' then '스타벅스'
             when 상호명 ='%이디야커피%' then '이디야커피'
             else 상호명 end
 order by count(*) desc fetch first 10 rows only;
+
+-- market_2022 테이블에서 상호명에 스타벅스를 포함하고 있는 모든 행과 열을 출력하시오.  
+select * 
+from market_2022 
+where 상호명 like '%스타벅스%';
+
+-- market_2022 에서 시군구명 컬럼의 데이터를 출력하는데 중복을 제거해서 출력하시오. 
+select distinct 시군구명 
+from market_2022;
+
+-- 강남구에 있는 스타벅스 매장의 모든 컬럼과 데이터를 출력하시오. 
+select * 
+from market_2022 
+where 상호명 like '%스타벅스%' and 시군구명 = '강남구';
+
+-- 코로나 이전인 market_2017와 코로나 이후인 market_2022 을 각각 쿼리해서 서울시 강남구에 있는
+-- 스타벅스 매장이 몇 개가 없어졌는지 출력하시오. 
+select count(*) 
+from market_2022 
+where 상호명 like '%스타벅스%' and 시군구명 = '강남구'; -- 74
+
+select count(*) 
+from market_2017 
+where 상호명 like '%스타벅스%' and 시군구명 = '강남구';  -- 79 (5개가 없어졌다.) 
+
+-- 우리 반 테이블에서 성씨를 출력하고 성씨 별 인원수를 출력하시오. 
+select case when length(ename)=4 then substr(ename, 1,2)
+        else substr(ename,1,1) end as 성, count(*) 
+from emp18 
+group by  case when length(ename)=4 then substr(ename, 1,2)
+        else substr(ename,1,1) end;
+        
+-- (세로 출력) 직업, 직업별 총 월급을 출력하는데 직업이 salesman 은 제외하고 출력하고 
+-- 직업별 총 월급이 5000 이상인 것만 출력하고 직업별 총 월급이 높은 것부터 출력하시오. 
+select job, sum(sal) 
+from emp 
+where job <> 'SALESMAN'
+group by job
+HAVING SUM(SAL) >= 5000
+order by sum(sal) desc;
+
+-- 직업, 직업별 최대 월급, 직업별 최소 월급, 직업별 총 월급을 출력하시오. 
+select job, max(sal), min(sal), sum(sal) 
+from emp 
+group by job;
