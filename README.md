@@ -114,9 +114,30 @@
       - row : 행을 기준으로 누적치를 출력, range : 범위를 기준으로 누적치를 출력 (날짜처럼 범위를 줄 수 있는 경우일 때, range를 사용하면 범위에 대한 누적 데이터가 출력 된다.) 
       - unbounded preceding : 맨 처음 행, unbounded following : 맨 마지막 행
 
-  - ratio_to_report 함수와 cume_dist 함수의 차이 
-    - ratio_to_report : 전체 sum(컬럼명) 값에 대한 행 별 컬럼 값의 백분율을 소수점으로 구한다.
-    - cume_dist : 전체 건수의 값에 대한 행 별 값의 백분율을 소수점으로 구한다. 
+- ratio_to_report 함수와 cume_dist 함수의 차이
+  - ratio_to_report : 전체 sum(컬럼명) 값에 대한 행 별 컬럼 값의 백분율을 소수점으로 구한다.
+  - cume_dist : 전체 건수의 값에 대한 행 별 값의 백분율을 소수점으로 구한다. 
+
+- rollup 함수와 cube 함수 
+  - rollup 함수 안의 column의 개수 + 1 개 만큼 집계한 결과 그룹이 출력이 된다.
+  - cube 함수는 rollup 함수와 다르게 집계 결과를 맨 위에 출력한다. 
+    - cube의 공식 : 2^n (2의 n승, n = column의 개수)
+      
+- row_number 함수와 rownum 함수의 차이
+  - row_number() 함수는 정렬된 결과에 번호를 numbering 할 때 사용한다.
+  - rownum 은 쿼리문의 출력 결과에 번호를 numbering 할 떄 사용한다.
+    - rownum을 주로 사용하는 경우는 어떤 큰 테이블을 일부만 보고 싶을 때 사용한다. 
+    - rownum은 첫 번쨰 값만 독단적으로 볼 수 있다. 앞에 있는 번호들을 전부 봐야 특정 번호의 rownum 데이터를 볼 수 있다.
+    - 특정 번호의 rownum만 보고 싶다면, 서브쿼리를 사용하여 서브 쿼리 안에 있는 rownum에 별칭을 주어야 한다.
+   
+- Join 함수
+  - (+) : outer join sign
+    - (+) 는 데이터가 모자란 쪽에다가 붙인다.
+    - (+) 는 한쪽에만 쓸 수 있다. 양쪽 다 보려면 full outer join을 사용해야 한다. 
+
+
+
+
 
 
 
