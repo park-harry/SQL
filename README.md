@@ -15,6 +15,7 @@
   - SQL 사용 통틀어서 double quotation mark는 별칭 변경할 때만 사용된다.
   - column 별칭에 공백 문자나 특수 문자를 사용하려면 double quotation mark를 둘러줘야 한다.
   - column 명에 대소문자를 구분해서 출력하고 싶다면 double quotation mark를 둘러줘야 한다.
+  - 숫자를 별칭으로 출력하면 double quotation mark를 둘러줘야 한다. 
  
 - order by 절은 select 문에서 맨 마지막에 기술하는 SQL이고 실행도 맨 마지막에 실행되는 구문이다.
 
@@ -85,5 +86,39 @@
   - partition by는 데이터 분석 함수에서 사용하는 over 다음에 나오는 괄호 안에 사용하는 옵션
 
 - 데이터 분석 함수 사용 시 주의 사항
-  - 순위를 출력하는 데이터 분석함수에서는 대부분 over () 를 사용하지만 특정 값이 dense_rank() 또는 rank() 가로 안에 들어가면 over()가 아닌 within group () 을 써야 한다. 
+  - 순위를 출력하는 데이터 분석함수에서는 대부분 over () 를 사용하지만 특정 값이 dense_rank() 또는 rank() 가로 안에 들어가면 over()가 아닌 within group () 을 써야 한다.
+  - listagg 함수는 그룹 함수처럼 group by 절을 사용해야 한다. 또한, within group 을 사용해야 한다.  
+  - within group을 써야 하는 경우 2가지 
+    1. rank(값) within group (order by 컬럼명)
+    2. listagg(컬럼명, ',') within group (order by 컬럼명)
+  - lag(전 행 출력) 또는 lead (다음 행 출력)을 사용할 때, 1을 쓰면 전행, 2를 전전 행이 출력된다.
+    - ex) lag(empno,1) over (order by empno asc) as 전행
+
+- pivot문 사용 시 주의 사항
+  - from 절에 괄호를 열고 필요한 column 만 선택한다.
+  - 필요한 column을 선택할 때, 그룹 함수는 사용하지 말고 column명만 사용한다.
+  - from 절의 괄호 안에 함수는 사용할 수 있지만 반드시 column 별칭을 써줘야 한다.
+  - ex ) select * 
+        from (select deptno, sal from emp)
+        pivot(sum(sal) for deptno in (10,20,30));
+- unpivot 사용 시 주의 사항
+  - from 절에는 table 이름만 작성한다.
+  - unpivot 다음에 나오는 괄호 안에 별칭은 마음대로 작성 가능하다.
+  - in 다음에 나오는 괄호 안에 column 이름을 작성할 때 single quotation mark 사용하지 않는다. 
+  - ex) select * 
+        from order2 
+        unpivot (갯수 for 아이템 in (bicycle, camera, notebook));
+
+  - SQL window 문
+    - order by 컬럼명 **asc/desc rows/range** between unbounded **preceding/following** and current row
+      - row : 행을 기준으로 누적치를 출력, range : 범위를 기준으로 누적치를 출력 (날짜처럼 범위를 줄 수 있는 경우일 때, range를 사용하면 범위에 대한 누적 데이터가 출력 된다.) 
+      - unbounded preceding : 맨 처음 행, unbounded following : 맨 마지막 행
+
+  - ratio_to_report 함수와 cume_dist 함수의 차이 
+    - ratio_to_report : 전체 sum(컬럼명) 값에 대한 행 별 컬럼 값의 백분율을 소수점으로 구한다.
+    - cume_dist : 전체 건수의 값에 대한 행 별 값의 백분율을 소수점으로 구한다. 
+
+
+
+
 # MSSQL 
