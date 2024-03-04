@@ -18,3 +18,45 @@ group by rollup(telecom);
 select nvl(telecom,'total') as telecom, count(*)  
 from emp18
 group by rollup(telecom); 
+
+-- 직업, 직업별 총 월급을 출력하는데 맨 아래에 전체 총 월급이 나오고 옆에 '전체 집계'라고 나오게 하시오. 
+select nvl(job,'전체 집계'), sum(sal) 
+from emp 
+group by rollup(job); 
+
+-- 입사한 년도(4자리), 입사한 년도별 총 월급을 출력하는데 맨 아래에 전체 총 월급도 출력하시오. 
+select nvl(to_char(hiredate, 'rrrr'),'total') as 입사년도, sum(sal) 
+from emp 
+group by rollup(to_char(hiredate, 'rrrr'));
+
+-- 부서번호, 직업, 부서번호별 직업별 총 월급을 출력하시오. 
+select deptno, job, sum(sal) 
+from emp 
+group by deptno, job
+order by deptno, job;
+
+-- 위의 결과를 다시 출력하는데 ROLLUP을 써서 출력하시오. 
+select deptno, job, sum(sal) 
+from emp 
+group by rollup(deptno, job)
+order by deptno;
+
+-- 우리 반 테이블에서 성별, 통신사, 평균 나이를 출력하는데 rollup을 이용하여 아래의 
+-- 3가지 그룹핑된 결과 집합이 출력되게 하시오. 
+-- 출력되는 결과: 
+-- 1. gender, telecom 
+-- 2. gender 
+-- 3. 전체  
+select gender, telecom, round(avg(age),2) 
+from emp18
+group by rollup(gender,telecom)
+order by gender, telecom;
+
+--위의 결과를 다시 출력하는데 null 자리를 모두 채우시오. 
+select gender, 
+case when gender is null then '전체토탈' 
+else nvl(telecom,'토탈') end as 통신사, 
+round(avg(age),2) as 평균나이
+from emp18
+group by rollup(gender,telecom)
+order by gender, telecom;
