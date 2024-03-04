@@ -69,14 +69,21 @@
 - regexp_substr 의 예시
   - regexp_substr(address, '[^ ]+',1,1) → 공백이 아닌 (^) 여러개 (+) 있는 것에서 첫 글자부터 읽어서 잘라내라는 뜻
 
-group 함수 
-1. max
-2. min
-3. avg
-4. sum
-5. count    
+- group 함수 
+  1. max
+  2. min
+  3. avg
+  4. sum
+  5. count    
 
 - group 함수 특징 
   - GROUP 함수는 NULL 값을 무시한다.
-  - GROUP 함수로 조건을 줄 때는 HAVING 절을 사용해야 한다. 
+  - GROUP 함수로 조건을 줄 때는 HAVING 절을 사용해야 한다.
+ 
+- **group by 과 partition by의 차이점**
+  - group by 는 그룹 함수 (max, min, avg, count, sum)와 같이 사용하는 SQL 절
+  - partition by는 데이터 분석 함수에서 사용하는 over 다음에 나오는 괄호 안에 사용하는 옵션
+
+- 데이터 분석 함수 사용 시 주의 사항
+  - 순위를 출력하는 데이터 분석함수에서는 대부분 over () 를 사용하지만 특정 값이 dense_rank() 또는 rank() 가로 안에 들어가면 over()가 아닌 within group () 을 써야 한다. 
 # MSSQL 
