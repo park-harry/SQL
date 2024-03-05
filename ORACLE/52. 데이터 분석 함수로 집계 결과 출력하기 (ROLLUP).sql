@@ -60,3 +60,14 @@ round(avg(age),2) as 평균나이
 from emp18
 group by rollup(gender,telecom)
 order by gender, telecom;
+
+-- 년도를 가로로 출력, 직업을 세로로 출력하고 직업별 합계, 년도별 합계, 그리고 총 합계를 구현하시오. (rollup 사용) 
+select nvl(job,'합계') as job, 
+nvl(sum(decode(to_char(hiredate,'rrrr'),'1980',sal)),0) as "1980",
+nvl(sum(decode(to_char(hiredate,'rrrr'),'1981',sal)),0) as "1981",
+nvl(sum(decode(to_char(hiredate,'rrrr'),'1982',sal)),0) as "1982",
+nvl(sum(decode(to_char(hiredate,'rrrr'),'1983',sal)),0) as "1983",
+sum(sal)
+from emp 
+group by rollup(job)
+order by job;
