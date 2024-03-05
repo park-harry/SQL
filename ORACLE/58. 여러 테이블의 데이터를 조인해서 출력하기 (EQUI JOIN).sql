@@ -63,3 +63,13 @@ where e.empno = b.empno and e.deptno = d.deptno;
 select e.ename, e.sal, b.b_bonus, d.loc
 from emp e, bonus b, dept d
 where e.empno = b.empno and e.deptno = d.deptno and d.loc = 'DALLAS';
+
+-- 이름에 S자를 포함하고 있는 사원들의 이름, 월급, 부서위치를 출력하시오. 
+select e.ename, e.sal, d.loc 
+from emp e, dept d 
+where e.deptno = d.deptno and e.ename like '%S%';
+
+-- 부서위치, 이름, 월급, 월급의 순위를 출력하는데 부서위치 별로 각각 월급의 순위가 출력되게 하시오. 
+select d.loc, e.ename, e.sal, dense_rank() over (partition by d.loc order by e.sal) as 순위 
+from emp e, dept d
+where e.deptno = d.deptno;
