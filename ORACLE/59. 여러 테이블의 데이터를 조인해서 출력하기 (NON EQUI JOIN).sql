@@ -26,3 +26,17 @@ select d.loc, sum(e.sal)
 from emp e, dept d 
 where e.deptno = d.deptno 
 group by rollup(d.loc);
+
+-- emp와 dept와 salgrade를 조인해서 결과를 출력하는데 CHICAGO에서 근무하는 사원들의 이름, 
+-- 월급, 부서위치, 부서명, grade를 출력하시오. 
+select e.ename, e.sal, d.loc, d.dname, s.grade
+from emp e, dept d, salgrade s
+where e.deptno = d.deptno and e.sal between s.losal and s.hisal
+and d.loc = 'CHICAGO'; 
+
+-- 급여등급, 급여등급 별로 해당하는 사원들의 이름을 가로로 출력되게 하시오. 
+-- 가로로 출력될 때 월급이 높은 사원 순으로 출력되게 하시오. 
+select s.grade, listagg(e.ename,',') within group (order by e.sal desc) as ename 
+from emp e, salgrade s 
+where e.sal between s.losal and s.hisal
+group by s.grade; 
