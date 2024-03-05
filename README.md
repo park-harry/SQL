@@ -129,21 +129,34 @@
     - rownum을 주로 사용하는 경우는 어떤 큰 테이블을 일부만 보고 싶을 때 사용한다. 
     - rownum은 첫 번쨰 값만 독단적으로 볼 수 있다. 앞에 있는 번호들을 전부 봐야 특정 번호의 rownum 데이터를 볼 수 있다.
     - 특정 번호의 rownum만 보고 싶다면, 서브쿼리를 사용하여 서브 쿼리 안에 있는 rownum에 별칭을 주어야 한다.
-   
-- Join 함수
-  - (+) : outer join sign
-    - (+) 는 데이터가 모자란 쪽에다가 붙인다.
-    - (+) 는 한쪽에만 쓸 수 있다. 양쪽 다 보려면 full outer join을 사용해야 한다. 
 
 - 오라클 조인 문법과 1999 ANSI 조인 문법
-  - **오라클 조인 문법**
+  - **오라클 조인 문법**    
     select e.ename, d.loc
     from emp e ,dept d
     where e.deptno = d.deptno;
-  - **1999 ANSI 조인 문법**
+  - **1999 ANSI 조인 문법**     
     select e.ename, d.loc
     from emp e join dept d
     on (e.deptno = d.deptno);
+
+- Join 함수
+  - (+) : outer join sign
+    - (+) 는 데이터가 모자란 쪽에다가 붙인다.
+    - (+) 는 한쪽에만 쓸 수 있다. 양쪽 다 보려면 full outer join을 사용해야 한다.
+    - left/right outer joing 사용 시, 반대 쪽에다가 (+) 를 붙인다.
+  
+  - Natural Join
+    -   NATURAL JOIN  사용 시, 오라클이 알아서 조인 조건을 찾아서 조인해준다.
+    -   NATURAL 조인이 가능하려면 두 테이블에 서로 조인하려는 공통된 column이 있어야 하고 **두 column의 데이터 유형이 서로 동일해야 한다.** 
+
+- 집합 연산자 (union all, union) 사용 시 주의 사항
+    - 위의 sql과 아래의 sql의 column 의 개수가 동일해야 한다.
+    - 위의 sql과 아래의 sql의 column 의 데이터 유형이 동일해야 한다.
+    - 위의 sql의 column 명으로 결과가 출력이 된다.
+    - order by 절은 맨 아래에 있는 쿼리문에만 사용할 수 있다.
+    - UNION ALL : 중복 값 제거가 안 되고 모두 출력된다.
+    - UNION : 중복 값이 제거된다. 
 
 
 
