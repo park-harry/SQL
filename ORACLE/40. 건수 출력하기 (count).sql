@@ -126,3 +126,11 @@ order by sum(sal) desc;
 select job, max(sal), min(sal), sum(sal) 
 from emp 
 group by job;
+
+-- 우리반 테이블에서 나이를 출력하고 나이별 인원수를 출력하는데 나이별 인원수가 높은 것부터 
+-- 출력하시오. 
+select age, count(*) 
+from emp18 
+group by age
+order by count(*) desc;
+
