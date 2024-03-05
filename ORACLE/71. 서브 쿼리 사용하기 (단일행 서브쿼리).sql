@@ -31,10 +31,11 @@ select max(a_price)
 from price; 
 
 -- 서울시 물가 데이터 중에 가장 가격(a_price)이 비싼 생필품(a_name)과 그 가격을 출력하시오. 
-select a_name, a_price 
+desc price;
+
+select a_price, a_name
 from price
-where a_price = (select max(a_price)
-from price);
+where a_price = (select max(a_price) from price);
 
 -- 직업이 SALESMAN인 사원들중에 최대월급을 받는 사원의 이름과 월급을 출력하시오. 
 select ename, sal 
