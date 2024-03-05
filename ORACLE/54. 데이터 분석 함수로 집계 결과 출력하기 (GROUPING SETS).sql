@@ -30,3 +30,8 @@ select empno, ename, sum(sal)
 from emp 
 group by grouping sets((empno,ename),())
 order by empno;
+
+select to_char(hiredate,'rrrr'), job, sum(sal) 
+from emp 
+group by grouping sets(to_char(hiredate,'rrrr'), job)
+order by job asc, to_char(hiredate,'rrrr') desc;
