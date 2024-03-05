@@ -135,7 +135,15 @@
     - (+) 는 데이터가 모자란 쪽에다가 붙인다.
     - (+) 는 한쪽에만 쓸 수 있다. 양쪽 다 보려면 full outer join을 사용해야 한다. 
 
-
+- 오라클 조인 문법과 1999 ANSI 조인 문법
+  - **오라클 조인 문법**
+    select e.ename, d.loc
+    from emp e ,dept d
+    where e.deptno = d.deptno;
+  - **1999 ANSI 조인 문법**
+    select e.ename, d.loc
+    from emp e join dept d
+    on (e.deptno = d.deptno);
 
 
 
