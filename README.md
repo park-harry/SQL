@@ -158,7 +158,14 @@
     - UNION ALL : 중복 값 제거가 안 되고 모두 출력된다.
     - UNION : 중복 값이 제거된다. 
 
-
+- select 문의 6가지 절에서 서브 쿼리로 쓸 수 있는 절
+  - select 서브 쿼리 사용 가능 ( scalar subquery )
+    - 스칼라 서브 쿼리는 딱 1개의 값만 리턴 할 수 있다. 
+  - from 서브 쿼리 사용 가능 ( in line view )
+  - where 서브 쿼리 사용 가능 ( sub query )   
+  - group by   X
+  - having  서브 쿼리 사용 가능 ( scalar subquery )    
+  - order by 서브 쿼리 사용 가능 ( scalar subquery )
 
 
 
