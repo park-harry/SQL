@@ -18,3 +18,10 @@ group by telecom;
 select telecom, listagg(ename || '('||age||')', ', ') within group (order by age desc)
 from emp18 
 group by telecom;
+
+-- 부서위치별 직원 이름과 직원의 월급을 출력하는데 Employee라는 column으로 지정하고 직원의
+-- 이름과 월급을 가로로 출력하시오. 
+select d.loc, listagg(ename || '('||sal||')') within group (order by sal desc) as Employee
+from emp e, dept d
+where e.deptno = d.deptno 
+group by d.loc;
