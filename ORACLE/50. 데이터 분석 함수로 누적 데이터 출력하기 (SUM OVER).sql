@@ -66,3 +66,9 @@ select  * from  emp2;
 select ename, hiredate, sal, 
 sum(sal) over(order by hiredate asc range between unbounded preceding and current row) 누적치 
 from emp2;
+
+-- 직업이 salesman인 사원들의 이름, 직업, 월급, 월급의 누적치를 출력하시오. 
+select ename, job, sal, 
+sum(sal) over(order by sal asc rows between unbounded preceding and current row) as 누적치 
+from emp 
+where job = 'SALESMAN';
