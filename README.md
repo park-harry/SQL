@@ -167,7 +167,11 @@
   - having  서브 쿼리 사용 가능 ( scalar subquery )    
   - order by 서브 쿼리 사용 가능 ( scalar subquery )
 
-
-
+- commit의 종류 2가지
+  - 명시적 commit : commit 명령어를 직접 수행한 경우
+  - 암시적 commit : DDL, DCL 명령어를 수행했을 때, 정상 종료 했을 떄
+    - DDL : create, alter, drop, truncate, rename
+    - DCL : grant, revoke
+    - 정상 종료: exit 
 
 # MSSQL 
