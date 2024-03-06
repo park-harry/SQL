@@ -46,3 +46,7 @@ and gender in (select gender from emp18 where telecom = 'kt');
 select ename, age, gender, telecom 
 from emp18 
 where (age,gender) in (select age,gender from emp18 where telecom = 'kt');
+
+
+
+
