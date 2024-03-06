@@ -85,3 +85,9 @@ select ename, age
 from emp18 
 where age > (select max(age) from emp18 where telecom = 'kt') 
 order by age desc; 
+
+-- Allen과 같은 부서번호에서 근무하는 사원들의 이름, 월급을 출력하는데 Allen은 제외하고 출력하시오.
+select ename, sal 
+from emp 
+where deptno = (select deptno from emp where ename = 'ALLEN') 
+and ename <> 'ALLEN';
