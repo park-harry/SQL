@@ -26,3 +26,8 @@ else '말단 사원 아님' end as isleaf
 from emp 
 start with mgr is null 
 connect by prior empno = mgr;
+
+select ename, sys_connect_by_path(ename||'('||sal||')','/')
+from emp 
+start with mgr is null 
+connect by prior empno = mgr;
