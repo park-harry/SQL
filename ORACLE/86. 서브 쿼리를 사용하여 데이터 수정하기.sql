@@ -48,7 +48,7 @@ where e.telecom = t.telecom)
 set emp_tprice = telecom_tprice;
 
 -- sales200의 date_id에 값을 갱신하는데 time2의 date_id로 값을 갱신하시오. 
-(merge 문이나 update 절을 이용한 서브쿼리로 하면 된다.) 
+-- (merge 문이나 update 절을 이용한 서브쿼리로 하면 된다.) 
 update (select s.date_id as s_date_id, t.date_id as t_date_id 
 from sales200 s, time2 t 
 where s.rn = t.rn)
