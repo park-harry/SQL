@@ -32,3 +32,9 @@ select *
 from (select deptno, ename, sal, round(avg(sal) over(partition by deptno)) as "부서별 평균 월급"
     from emp)
 where sal > "부서별 평균 월급";
+
+select * 
+from (select ename, sal, hiredate, 
+			dense_rank() over (order by sal desc) as 순위
+      from emp) 
+where 순위 =2;
