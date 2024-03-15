@@ -19,7 +19,7 @@ from emp)
 where 순위 = 1;
 
 -- 부서 번호, 부서 번호별 평균 월급을 출력하시오. (복습문제) 
-select deptno, round(avg(sal)) 
+select deptno  , round(avg(sal)) 
 from emp 
 group by deptno;
 
