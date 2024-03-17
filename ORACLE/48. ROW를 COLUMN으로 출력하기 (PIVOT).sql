@@ -24,3 +24,6 @@ select round("남자 평균 나이"),round("여자 평균 나이")
 from (select gender, age from emp18) 
 pivot(avg(age) for gender in ('남' as "남자 평균 나이",'여' as "여자 평균 나이"));
 
+select * 
+from (select to_char(hiredate,'RRRR') as hireyear, job, sal from emp) 
+pivot(sum(sal) for job in ('ANALYST','CLERK','MANAGER','SALESMAN','PRESIDENT'));
