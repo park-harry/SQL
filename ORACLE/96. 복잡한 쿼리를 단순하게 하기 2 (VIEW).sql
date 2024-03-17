@@ -128,3 +128,13 @@ from emp;
 -- view를 만들수는 있지만 데이터가 보이지는 않는다. 
 
 select * from emp77; 
+
+-- 부서번호, 부서번호별 평균월급을 출력하는 view를 생성하시오. 부서번호별 평균 월급의 소수점 
+-- 이하는 출력 안되게 반올림하고 천단위 표시를 꼭 해서 출력되게 하시오. (emp_avg) 
+create or replace view emp_avg 
+as 
+select deptno, to_char(round(avg(sal)),'999,999') as avgsal
+from emp 
+group by deptno; 
+
+select * from emp_avg;
